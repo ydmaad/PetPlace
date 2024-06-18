@@ -5,13 +5,9 @@ import { Map as KakaoMap, MapMarker } from "react-kakao-maps-sdk";
 import { useMapContext } from '../provider/MapProvider'
 import useKakaoLoader from "../useKakaoLoader";
 
-export default function Map(
-    geoLoc = false,
-    className = "",
-    style = {},
-) {
+export default function Map(geoLoc = false) {
     useKakaoLoader();
-    
+
     const { setMap, markers } = useMapContext();
     const [result, setResult] = React.useState("");
     const [location, setLocation] = React.useState({ latitude: 33.450701, longitude: 126.570667 });
@@ -31,8 +27,10 @@ export default function Map(
                 lat: location.latitude,
                 lng: location.longitude,
             }}
-            className={className}
-            style={style}
+            style={{
+                height: "900px",
+                width: "100%",
+            }}
             level={3}
             onCreate={setMap}
             onDragEnd={(map) => {
