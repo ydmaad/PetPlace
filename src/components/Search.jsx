@@ -14,7 +14,6 @@ export default function Search() {
             if (status === kakao.maps.services.Status.OK) {
                 const bounds = new kakao.maps.LatLngBounds()
                 const markers = [];
-                const datas = [];
                 for (let i = 0; i < data.length; i++) {
                     const item = data[i];
                     markers.push({
@@ -23,14 +22,8 @@ export default function Search() {
                             lng: data[i].x,
                         },
                         content: data[i].place_name,
+                        url: data[i].place_url,
                     })
-                    datas.push({
-                        title: item.place_name,
-                        latlng: {
-                            lat: item.y,
-                            lng: item.x
-                        }
-                    });
                     setMarkers(markers);
                     bounds.extend(new kakao.maps.LatLng(item.y, item.x))
                 }

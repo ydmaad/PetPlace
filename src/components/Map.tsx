@@ -16,13 +16,6 @@ export default function Map({
     const mapRef = React.useRef<kakao.maps.Map>(null);
     const [result, setResult] = React.useState<string>("");
     const [location, setLocation] = React.useState({ latitude: 33.450701, longitude: 126.570667 });
-    const [info, setInfo] = React.useState<{
-        content: string;
-        position: {
-            lat: number;
-            lng: number;
-        }
-    }>();
 
 	React.useEffect(() => {
 		navigator.geolocation.getCurrentPosition((response) => {
@@ -52,12 +45,11 @@ export default function Map({
                 <MapMarker
                     key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
                     position={marker.position}
-                    onClick={() => setInfo(marker)}
-                >
-                    {info && info.content === marker.content && (
-                        <div style={{color:"#000"}}>{marker.content}</div>
-                    )}
-                </MapMarker>
+                    onClick={() => {
+                        // 새로운 창 열기: marker.url
+                        window.open(marker.url, "_blank");
+                    }}
+                />
             ))}
             <span>{result}</span>
         </KakaoMap>

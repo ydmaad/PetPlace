@@ -5,7 +5,7 @@ const MapContext = React.createContext({
     map: null,
     setMap: (_) => {},
 
-    markers: [ { position: { lat: 0, lng: 0 }, content: '' } ],
+    markers: [ { position: { lat: 0, lng: 0 }, content: '', url: '' } ],
     setMarkers: (_) => {},
 });
 
