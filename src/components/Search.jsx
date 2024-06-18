@@ -41,6 +41,7 @@ export default function Search() {
     
 
     return (
+        // TODO: 요 기
         <div>
             <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} className="p-2 border border-gray-300 rounded-lg" />
             <button onClick={fetchPlaces} className="p-2 bg-blue-500 text-white rounded-lg">검색</button>
