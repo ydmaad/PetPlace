@@ -1,23 +1,23 @@
 'use client'
 
 import React from "react";
-import { Map as KakaoMap, MarkerClusterer, MapMarker } from "react-kakao-maps-sdk";
+import { Map as KakaoMap, MapMarker } from "react-kakao-maps-sdk";
 import { useMapContext } from '../provider/MapProvider'
 import useKakaoLoader from "../useKakaoLoader";
 
-export default function Map({
+export default function Map(
     geoLoc = false,
     className = "",
     style = {},
-}) {
-    const { setMap, markers } = useMapContext();
+) {
     useKakaoLoader();
-
-    const mapRef = React.useRef<kakao.maps.Map>(null);
-    const [result, setResult] = React.useState<string>("");
+    
+    const { setMap, markers } = useMapContext();
+    const [result, setResult] = React.useState("");
     const [location, setLocation] = React.useState({ latitude: 33.450701, longitude: 126.570667 });
 
 	React.useEffect(() => {
+        if (!geoLoc) return;
 		navigator.geolocation.getCurrentPosition((response) => {
             const { latitude, longitude } = response.coords;
             setLocation({ latitude, longitude });
@@ -34,7 +34,6 @@ export default function Map({
             className={className}
             style={style}
             level={3}
-            ref={mapRef}
             onCreate={setMap}
             onDragEnd={(map) => {
                 const latlng = map.getCenter()
