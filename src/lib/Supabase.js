@@ -1,11 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
-
 const SupabaseProviders = Object.freeze({
-    Discord: 'discord',
-    Github: 'github',
+    Kakao: 'kakao',
     Google: 'google',
     Notion: 'notion',
-    Twitch: 'twitch'
 });
 
 class Supabase {
