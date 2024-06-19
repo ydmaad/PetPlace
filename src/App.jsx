@@ -1,17 +1,16 @@
-import Map from './components/Map'
-import Search from './components/Search'
-import MapProvider from './provider/MapProvider'
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import LoginPage from './pages/LoginPage';
+import Mypage from './pages/MyPage';
+import MainPage from './pages/MainPage';
 
-function App() {
+export default function App() {
   return (
-    <MapProvider>
-      <Search />
-      <Map geoLoc={false} style={{
-        height: '900px',
-        width: '100%'
-      }} />
-    </MapProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<MainPage />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/mypage/:userId' element={<Mypage/>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
-
-export default App

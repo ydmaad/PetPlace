@@ -2,11 +2,21 @@
 import React from 'react';
 
 const MapContext = React.createContext({
-    map: null,
-    setMap: (_) => {},
-
-    markers: [ { position: { lat: 0, lng: 0 }, content: '', url: '' } ],
-    setMarkers: (_) => {},
+    mapState: [null, (_) => {}],
+    markerState: [[], (_) => {}],
+    // markers: [{
+    //     imgUrl: undefined,
+    //     position: {
+    //         lat: 0,
+    //         lng: 0,
+    //     },
+    //     name: '',
+    //     address_name: '',
+    //     category_name: '',
+    //     url: '',
+    //     id: 0
+    // }],
+    // setMarkers: (_) => {},
 });
 
 export function useMapContext() {
@@ -15,11 +25,11 @@ export function useMapContext() {
 
 // eslint-disable-next-line react/prop-types
 export default function MapProvider({ children }) {
-    const [map, setMap] = React.useState(null);
-    const [markers, setMarkers] = React.useState([]);
+    const mapState = React.useState(null);
+    const markerState = React.useState([]);
 
     return (
-        <MapContext.Provider value={{ map, setMap, markers, setMarkers }}>
+        <MapContext.Provider value={{ mapState, markerState }}>
             {children}
         </MapContext.Provider>
     );

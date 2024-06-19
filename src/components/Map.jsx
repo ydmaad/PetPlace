@@ -8,7 +8,10 @@ import useKakaoLoader from "../useKakaoLoader";
 export default function Map(geoLoc = false) {
     useKakaoLoader();
 
-    const { setMap, markers } = useMapContext();
+    const { mapState, markerState } = useMapContext();
+    const [ _, setMap ] = mapState;
+    const [ markers, __ ] = markerState;
+
     const [result, setResult] = React.useState("");
     const [location, setLocation] = React.useState({ latitude: 33.450701, longitude: 126.570667 });
 
@@ -21,34 +24,37 @@ export default function Map(geoLoc = false) {
 	}, []);
 
     return (
-        <KakaoMap
-            id="map"
-            center={{
-                lat: location.latitude,
-                lng: location.longitude,
-            }}
-            style={{
-                height: "900px",
-                width: "100%",
-            }}
-            level={3}
-            onCreate={setMap}
-            onDragEnd={(map) => {
-                const latlng = map.getCenter()
-                setResult(`변경된 지도 중심좌표는 ${latlng.getLat()} 이고, 경도는 ${latlng.getLng()} 입니다`,)
-            }}
-        >
-            {markers.map((marker) => (
-                <MapMarker
-                    key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
-                    position={marker.position}
-                    onClick={() => {
-                        // 새로운 창 열기: marker.url
-                        window.open(marker.url, "_blank");
-                    }}
-                />
-            ))}
+        <div>
+            <KakaoMap
+                id="map"
+                center={{
+                    lat: location.latitude,
+                    lng: location.longitude,
+                }}
+                style={{
+                    height: "700px",
+                    width: "700px",
+                }}
+                level={3}
+                onCreate={setMap}
+                onDragEnd={(map) => {
+                    const latlng = map.getCenter()
+                    setResult(`변경된 지도 중심좌표는 ${latlng.getLat()} 이고, 경도는 ${latlng.getLng()} 입니다`,)
+                }}
+            >
+                {markers.map((marker) => (
+                    <MapMarker
+                        key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
+                        position={marker.position}
+                        onClick={() => {
+                            // 새로운 창 열기: marker.url
+                            window.open(marker.url, "_blank");
+                        }}
+                    />
+                ))}
+                
+            </KakaoMap>
             <span>{result}</span>
-        </KakaoMap>
+        </div>
     )
 }
