@@ -1,7 +1,7 @@
 'use client';
 
 import { useMapContext } from '../provider/MapProvider';
-import React from 'react';
+import React, { useEffect } from 'react';
 import useKakaoLoader from '../useKakaoLoader';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -38,7 +38,7 @@ const Header = (showSearchBar=false) => {
               address_name: data[i].address_name,
               category_name: data[i].category_name,
               url: data[i].place_url,
-              id: data[i].id,
+              id: parseInt(data[i].id),
             })
             bounds.extend(new kakao.maps.LatLng(item.y, item.x))
           }
@@ -59,19 +59,20 @@ const Header = (showSearchBar=false) => {
 
   const handleLogout = async () => {
     try {
-      await supabase.supabase.auth.signOut(); // 해결~ ㄳㄳㄱㄳㅅㄳㅅㄳㄳ 하트
+      await supabase.supabase.auth.signOut(); 
       window.location.href = '/login';
     } catch (error) {
       console.error('Logout error:', error);
     }
   };
 
-
-  supabase.getSession().then((data) => setUserId(data.session.user.id));
+  useEffect(() => {
+    supabase.getSession().then((data) => setUserId(data.session.user.id))
+  }, []);
 
   return (
-    <div>
-      <div className="navbar bg-base-100 mb-12">
+    <div className="w-full justify-center align-center">
+      <div className="w-full md:w-4/5 navbar bg-base-100 mb-4 md:mb-12 mx-auto">
         <div className="flex-1">
           <Link className="h-14 btn btn-ghost text-xl flex items-center justify-center" to={`/`}>
             <img className='w-14 h-14' src="/mumu.svg" />
@@ -82,7 +83,7 @@ const Header = (showSearchBar=false) => {
           {
             showSearchBar.showSearchBar && (
               <div className="flex space-x-2">
-                <input type="text" placeholder="지역을 입력해주세요" className="input input-bordered w-32 md:w-auto" ref={searchRef} />
+                <input type="text" placeholder="키워드를 입력해주세요" className="input input-bordered w-32 md:w-auto" ref={searchRef} />
                 <button className="btn w-18" onClick={fetchPlaces}>검색</button>
               </div>
             )

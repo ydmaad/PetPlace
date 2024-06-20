@@ -1,22 +1,9 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 
 const MapContext = React.createContext({
     mapState: [null, (_) => {}],
     markerState: [[], (_) => {}],
-    // markers: [{
-    //     imgUrl: undefined,
-    //     position: {
-    //         lat: 0,
-    //         lng: 0,
-    //     },
-    //     name: '',
-    //     address_name: '',
-    //     category_name: '',
-    //     url: '',
-    //     id: 0
-    // }],
-    // setMarkers: (_) => {},
+    filterState: ['', (_) => {}],
 });
 
 export function useMapContext() {
@@ -27,9 +14,10 @@ export function useMapContext() {
 export default function MapProvider({ children }) {
     const mapState = React.useState(null);
     const markerState = React.useState([]);
+    const filterState = React.useState('');
 
     return (
-        <MapContext.Provider value={{ mapState, markerState }}>
+        <MapContext.Provider value={{ mapState, markerState, filterState }}>
             {children}
         </MapContext.Provider>
     );

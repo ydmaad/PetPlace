@@ -32,8 +32,8 @@ export default function Map(geoLoc = false) {
                     lng: location.longitude,
                 }}
                 style={{
-                    height: "700px",
-                    width: "700px",
+                    height: "70vh",
+                    width: "70vh",
                 }}
                 level={3}
                 onCreate={setMap}
