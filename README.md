@@ -1,12 +1,30 @@
-# VSCode에서 Microsoft가 만든 LiveShare 확장을 이용하여, 한대의 컴퓨터에 원격으로 접속해 작업하였음을 알립니다.
-# 즉, 깃 로그에 'LastDice' 만 표기되어있지만, '모든 팀원'들이 같이 참여한게 맞습니다.
+###  VSCode에서 Microsoft가 만든 LiveShare 확장을 이용하여, 한대의 컴퓨터에 원격으로 접속해 작업하였음을 알립니다.
+### ❗️ 즉, 깃 로그에 'LastDice' 만 표기되어있지만, '모든 팀원'들이 같이 참여한게 맞습니다. ❗️
 
-# React + Vite
+# PetPlace 🐶
+- 프로젝트 명 : Pet Place
+- 소개
+    - 한 줄 정리 : 반려견 동반이 가능한 카페와 음식점 및 펜션을 손쉽게 찾을 수 있는 서비스 제공
+    - 내용 : 카카오 지도 API를 이용하여 내 주변에 있는 혹은 원하는 키워드를 검색하여 카페와 음식점을 확인 할 수 있다
+ 
+# 기술 스택
+- Front-End
+  - 메인 프레임워크: React
+  - 상태 관리 라이브러리: TanStack-Query
+  - CSS 프레임워크: TailWind CSS, daisy UI
+  - HTTP 요청을 위한 라이브러리: Axios
+  
+- Back-End:
+  - Backend-as-a-Service (BaaS) 플랫폼: Supabase
+ 
+## 팀원 소개
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+| 이름 | 담당 업무 |
+| :---: | :--- |
+| 🐶 **양민애** | 음식점과 카페의 위치 가져오기 |
+| 🐱 **고종원** | Supabase 구조 설계, 지도 관리, 팀원 보조 |
+| 🦊 **양윤성** | 카카오맵 API를 이용한 지도 관리 |
+| 🐬 **홍유나** | API 데이터 기반 리스트 만들기 |
+| 🐰 **전승빈** | 검색 기능과 카테고리 구현 |
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# PetPlace
+---
