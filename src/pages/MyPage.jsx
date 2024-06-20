@@ -84,10 +84,11 @@ const MyPage = () => {
 
 
   return (
-    <>
+    <div className='w-full'>
+      <div className='w-3/4 mx-auto'>
       <Header showSearchBar={false} />
       <div className="flex justify-center items-center w-full">
-        <div className="w-4/5">
+        <div className="w-full">
           <div className="flex flex-col justify-center items-center w-full">
             <div className='flex justify-center'>
               <img alt="Tailwind CSS Navbar component" className='rounded-full w-12 mr-4'
@@ -97,8 +98,10 @@ const MyPage = () => {
           </div>
           <div className="my-5 p-6">
             <div className='flex items-center text-center mb-6'>
-              <h3 className='text-3xl font-bold mr-12 min-w-44'>북마크 장소</h3>
-              <Arrange />
+              <h3 className='text-3xl font-bold min-w-44'>북마크 장소</h3>
+              <div className='w-full'>
+                <Arrange />
+              </div>
             </div>
             {data.length === 0 ? (
               <div className="text-3xl text-center text-gray-500 mt-28">북마크 목록이 존재하지 않습니다!!</div>
@@ -124,7 +127,8 @@ const MyPage = () => {
           </div>
         </div>
       </div>
-    </>
+      </div>
+      </div>
   )
 }
 

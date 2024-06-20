@@ -12,7 +12,7 @@ function Arrange() {
 
     return (
         <div className='w-full'>
-        <div className="flex justify-center items-center w-9/12 mx-auto">
+        <div className="flex justify-center items-center w-full mx-auto">
             <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn m-1">
                     Theme

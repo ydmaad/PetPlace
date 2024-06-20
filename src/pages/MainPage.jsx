@@ -37,11 +37,13 @@ function MainPage() {
   // - 중심좌표까지의 거리(x,y 파라미터를 준 경우에만 존재). 단위 meter
 
   return (
-    <>
-      <Header showSearchBar={true} />
-      <Arrange />
-      <div className='flex justify-center w-full overflow-y-auto'>
-        <div className="flex w-3/4 mx-auto">
+    <div className='w-full'>
+        <div className='w-3/4 mx-auto'>
+          <Header showSearchBar={true} />
+          <Arrange />
+        </div>
+      <div className='flex justify-center overflow-y-auto'>
+        <div className="flex w-3/4">
           <div className="flex flex-col lg:flex-row gap-12 mt-6 w-full items-center justify-center">
               <div className="flex-1 md:h-auto overflow-y-auto">
                 <Map geoLoc={false} />
@@ -51,8 +53,8 @@ function MainPage() {
               </div>
           </div>
         </div> 
-      </div>
-    </>    
+        </div>
+    </div>    
   )
 }
 
