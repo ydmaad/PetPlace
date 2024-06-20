@@ -3,7 +3,6 @@ import Map from '../components/Map'
 import Header from '../components/Header'
 import Arrange from '../components/Arrange'
 import List from '../components/List'
-import MapProvider from '../provider/MapProvider'
 import supabase from '../lib/Supabase'
 
 
@@ -38,14 +37,22 @@ function MainPage() {
   // - 중심좌표까지의 거리(x,y 파라미터를 준 경우에만 존재). 단위 meter
 
   return (
-    <MapProvider>
+    <>
       <Header showSearchBar={true} />
       <Arrange />
-      <div className="flex space-x-10">
-        <Map geoLoc={false} />
-        <List />
+      <div className='flex justify-center w-full overflow-y-auto'>
+        <div className="flex w-3/4 mx-auto">
+          <div className="flex flex-col lg:flex-row gap-12 mt-6 w-full items-center justify-center">
+              <div className="flex-1 md:h-auto overflow-y-auto">
+                <Map geoLoc={false} />
+              </div>
+              <div className="flex-1 md:h-auto overflow-y-auto">
+                <List />
+              </div>
+          </div>
+        </div> 
       </div>
-    </MapProvider>
+    </>    
   )
 }
 

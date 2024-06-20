@@ -1,31 +1,19 @@
-import styled from 'styled-components';
+'use client';
+
 import React from 'react';
 import { themeChange } from 'theme-change';
-
-const ArrangeWrapper = styled.div`
-    display: flex;
-    align-items: center;
-
-    .dropdown {
-        margin-left: 15px;
-    }
-
-    .tabs {
-        margin-left: auto;
-        margin-right: 15px;
-    }
-`;
+import { useMapContext } from '../provider/MapProvider';
 
 function Arrange() {
+    const { filterState } = useMapContext();
+    const [ filter, setFilter ] = filterState;
 
-    React.useEffect(() => {
-        themeChange(false)
-        // 👆 false parameter is required for react project
-      }, [])
+    React.useEffect(() => themeChange(false), [])
 
     return (
-        <ArrangeWrapper>
-            <div className="dropdown mb-5">
+        <div className='w-full'>
+        <div className="flex justify-center items-center w-9/12 mx-auto">
+            <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn m-1">
                     Theme
                     <svg width="12px" height="12px" className="h-2 w-2 fill-current opacity-60 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048"><path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path></svg>
@@ -74,13 +62,22 @@ function Arrange() {
                     }
                 </ul>
             </div>
-            <div role="tablist" className="tabs tabs-boxed">
-                <a role="tab" className="tab">전체</a>
-                <a role="tab" className="tab tab-active">식당</a>
-                <a role="tab" className="tab">카페</a>
-                <a role="tab" className="tab">펜션</a>
+            <div role="tablist" className="tabs tabs-boxed ml-auto">
+                {
+                    [
+                        {value: '', label: "전체"},
+                        {value: "음식", label: "식당"},
+                        {value: "카페", label: "카페"},
+                        {value: "숙박", label: "펜션"},
+                    ].map((tab, index) => (
+                        <button key={index} role="tab" className={`tab ${filter === tab.value ? "tab-active" : ""}`} onClick={() => {
+                            setFilter(tab.value);
+                        }}>{tab.label}</button>
+                    ))
+                }
+                </div>
             </div>
-        </ArrangeWrapper>
+        </div>
     );
 }
 
