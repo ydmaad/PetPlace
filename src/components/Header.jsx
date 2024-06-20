@@ -72,7 +72,7 @@ const Header = (showSearchBar=false) => {
 
   return (
     <div className="w-full justify-center align-center">
-      <div className="w-full md:w-4/5 navbar bg-base-100 mb-4 md:mb-12 mx-auto">
+      <div className="w-full navbar bg-base-100 mb-4 md:mb-12 mx-auto">
         <div className="flex-1">
           <Link className="h-14 btn btn-ghost text-xl flex items-center justify-center" to={`/`}>
             <img className='w-14 h-14' src="/mumu.svg" />
