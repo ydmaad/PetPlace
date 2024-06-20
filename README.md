@@ -14,7 +14,7 @@
   - CSS 프레임워크: TailWind CSS, daisy UI
   - HTTP 요청을 위한 라이브러리: Axios
   
-- Back-End:
+- Back-End
   - Backend-as-a-Service (BaaS) 플랫폼: Supabase
  
 ## 팀원 소개
