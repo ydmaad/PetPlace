@@ -47,7 +47,7 @@ const MyPage = () => {
       queryClient.invalidateQueries({ queryKey: ["favoriteList"] });
     },
   });
-
+  //
   useEffect(() => {
     supabase.getSession().then((data) => setUserEmail(data.session.user.email));
   }, []);
